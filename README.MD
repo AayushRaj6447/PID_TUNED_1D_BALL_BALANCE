@@ -1,336 +1,307 @@
-# 🎯 Project Overview
-
 <div align="center">
 
-# ⚙️ PID Controlled 1-D Ball Balance System
+<img src="../Images/logo.png" width="140"/>
 
-### *Design, Development and Implementation of a Closed-Loop Control System*
+# ⚖️ PID Controlled 1-D Ball Balance System
+
+### *Real-Time Closed Loop Control using Arduino Nano & Time-of-Flight Sensing*
+
+<p align="center">
+
+<img src="https://img.shields.io/badge/Platform-Arduino%20Nano-00979D?style=for-the-badge&logo=arduino">
+<img src="https://img.shields.io/badge/Language-C++-00599C?style=for-the-badge&logo=cplusplus">
+<img src="https://img.shields.io/badge/Controller-PID-success?style=for-the-badge">
+<img src="https://img.shields.io/badge/Sensor-VL53L1X-orange?style=for-the-badge">
+<img src="https://img.shields.io/badge/Status-Completed-brightgreen?style=for-the-badge">
+
+</p>
 
 ---
 
-**Department of Electronics & Communication Engineering**  
-**Birla Institute of Technology, Mesra**
+### Department of Electronics & Communication Engineering
 
-**Team 4**
+### Birla Institute of Technology, Mesra
+
+*"Learning Control Systems through Practical Engineering."*
 
 </div>
 
 ---
 
-# 📑 Table of Contents
+# 📌 Navigation
 
-- Project Description
-- Objectives
-- Project Scope
-- Motivation
-- System Overview
-- Working Principle
-- Expected Outcomes
-- Project Deliverables
-- Team Members
-- Team Responsibilities
-- Development Timeline
-- Success Criteria
-- Repository Structure
+- [📖 Project Overview](#-project-overview)
+- [🎯 Objectives](#-objectives)
+- [⚡ Features](#-key-features)
+- [🏗 System Architecture](#-system-architecture)
+- [🔄 Working Principle](#-working-principle)
+- [🛠 Hardware Stack](#-hardware-stack)
+- [👨‍💻 Team](#-team)
+- [📅 Timeline](#-development-roadmap)
+- [✅ Success Criteria](#-success-criteria)
+- [📂 Repository Structure](#-repository-structure)
 
 ---
 
-# 📖 Project Description
+# 📖 Project Overview
 
-The **PID Controlled 1-D Ball Balance System** is an embedded control systems project developed to demonstrate the practical implementation of classical feedback control theory using a **Proportional–Integral–Derivative (PID) controller**.
+> **A practical implementation of classical control theory using embedded systems.**
 
-The project consists of a wooden balancing rail actuated by a **high-torque servo motor**, while the position of the ball is continuously measured using a **VL53L1X Time-of-Flight (ToF) distance sensor**. The measured position is compared against a predefined setpoint, and the resulting error is processed by the PID algorithm running on an **Arduino Nano**.
+The **PID Controlled Ball Balance System** demonstrates how an unstable mechanical system can be stabilized using a real-time feedback controller.
 
-Based on the controller output, the servo motor dynamically adjusts the inclination of the balancing rail to bring the ball back to the desired position.
+A steel ball rolls freely on a balancing rail while a **VL53L1X Time-of-Flight sensor** continuously measures its position. The Arduino Nano executes a PID controller that calculates the required corrective action and commands a **MG996R servo motor** to tilt the rail.
 
-This creates a **closed-loop feedback control system**, allowing the project to demonstrate important control engineering concepts including:
-
-- Closed-loop control
-- Stability
-- Error correction
-- Dynamic response
-- Feedback systems
-- Oscillation
-- Overshoot
-- Settling time
-- Steady-state error
-- Controller tuning
-
-Although simple in appearance, the project represents the same control principles used in numerous industrial and aerospace applications such as autonomous drones, robotic manipulators, satellite attitude control, self-balancing robots, and industrial automation systems.
+The entire system forms a **closed feedback loop** capable of maintaining stability even under external disturbances.
 
 ---
 
 # 🎯 Objectives
 
-The primary objectives of this project are:
-
-- Design and fabricate a stable one-dimensional ball balancing mechanism.
-- Develop a real-time embedded PID controller.
-- Understand the behavior of proportional, integral, and derivative control actions.
-- Learn the effect of PID parameters on system response.
-- Implement sensor-based closed-loop feedback.
-- Analyze system stability using practical experiments.
-- Reduce overshoot while maintaining fast response.
-- Achieve minimum steady-state error.
-- Study controller robustness under external disturbances.
-- Build a low-cost educational control systems platform.
+| 🎓 Learning | ⚙️ Engineering | 📈 Performance |
+|:------------|:---------------|:---------------|
+| Learn PID Theory | Build Embedded System | Minimize Overshoot |
+| Feedback Control | Mechanical Design | Reduce Error |
+| Sensor Integration | Electronics Assembly | Improve Stability |
+| Real-Time Programming | Hardware Integration | Faster Response |
 
 ---
 
-# 🌍 Project Scope
+# ⚡ Key Features
 
-This project focuses on the implementation of a **single-axis ball balancing system** capable of maintaining the position of a rolling ball near a predefined reference point.
-
-### Included Scope
-
-- Mechanical structure design
-- CAD modelling
-- Arduino programming
-- PID controller implementation
-- Servo control
-- Position sensing
-- Real-time control
-- Hardware integration
-- Experimental tuning
-- Performance analysis
-
-### Out of Scope
-
-The following advanced control techniques are beyond the scope of this project:
-
-- State-space control
-- LQR controller
-- Adaptive PID
-- Fuzzy Logic Control
-- Neural Network Controllers
-- Reinforcement Learning
-- Kalman Filtering
-- Machine Vision Based Tracking
-- Multi-axis balancing
+- 🎯 Closed Loop Feedback Control
+- ⚙️ PID Controller
+- 📡 Time-of-Flight Position Measurement
+- 🔄 Real-Time Servo Control
+- 📈 Live Position Correction
+- 🪵 Custom CAD Designed Structure
+- 📊 PID Gain Tuning
+- 🔋 Independent Servo Power Supply
+- 🧠 Embedded Programming
+- 📑 Modular Documentation
 
 ---
 
-# 💡 Motivation
+# 🏗 System Architecture
 
-Control systems are among the most important branches of modern engineering. Nearly every intelligent machine today relies on some form of feedback control.
+```mermaid
+flowchart LR
 
-Examples include:
+A(Set Point)
 
-- Aircraft flight stabilization
-- Drone attitude control
-- Self-driving vehicles
-- CNC machining
-- Robotic arms
-- Industrial automation
-- Medical devices
-- Spacecraft attitude control
+B(Error Calculation)
 
-The 1-D Ball Balance System provides an excellent educational platform for understanding these concepts because it represents an inherently unstable system that requires continuous corrective action.
+C(PID Controller)
 
-The project bridges the gap between theoretical control engineering and practical embedded system implementation.
+D(Arduino Nano)
 
----
+E(MG996R Servo)
 
-# ⚙️ System Overview
+F(Balance Rail)
 
-The project consists of the following major subsystems.
+G(Steel Ball)
 
+H(VL53L1X Sensor)
+
+A --> B
+H --> B
+
+B --> C
+C --> D
+D --> E
+E --> F
+F --> G
+G --> H
 ```
-             Desired Position
-                     │
-                     ▼
-            Error Calculation
-                     │
-                     ▼
-              PID Controller
-                     │
-                     ▼
-             Servo Motor (MG996R)
-                     │
-                     ▼
-             Tilting Wooden Rail
-                     │
-                     ▼
-             Ball Movement
-                     │
-                     ▼
-         VL53L1X ToF Sensor
-                     │
-                     └───────────────┐
-                                     │
-                                     ▼
-                             Arduino Nano
-```
-
-The Arduino continuously executes the control algorithm, forming a closed feedback loop capable of correcting disturbances in real time.
 
 ---
 
 # 🔄 Working Principle
 
-The operation of the system follows these sequential steps:
+```text
+Ball Position
+      │
+      ▼
+VL53L1X Sensor
+      │
+      ▼
+Arduino Nano
+      │
+      ▼
+PID Algorithm
+      │
+      ▼
+Servo Motor
+      │
+      ▼
+Rail Tilting
+      │
+      ▼
+Ball Motion
+      │
+      └───────────────Feedback───────────────┘
+```
 
-1. The ball is placed on the balancing rail.
-2. The Time-of-Flight sensor continuously measures its position.
-3. Arduino computes the error:
+The controller continuously performs the following operations:
 
-\[
-Error = Setpoint - Measured Position
-\]
-
-4. The PID controller calculates the required control output.
-
-\[
-u(t)=K_p e(t)+K_i\int e(t)dt+K_d\frac{de(t)}{dt}
-\]
-
-5. The servo motor tilts the rail.
-
-6. The ball moves toward the desired position.
-
-7. The sensor measures the new position.
-
-8. The feedback loop repeats approximately every few milliseconds.
-
-This continuous correction allows the system to maintain stability even when external disturbances are introduced.
-
----
-
-# 📦 Major Hardware Components
-
-| Component | Function |
-|------------|----------|
-| Arduino Nano | Executes PID algorithm |
-| MG996R Servo | Tilts balancing rail |
-| VL53L1X ToF Sensor | Measures ball position |
-| Wooden Rail | Mechanical balancing platform |
-| XL4015 Buck Converter | Stable power supply |
-| Breadboard & Wiring | Hardware integration |
+1. Measure Ball Position
+2. Compute Position Error
+3. Execute PID Algorithm
+4. Generate PWM Signal
+5. Rotate Servo
+6. Tilt Rail
+7. Correct Ball Motion
+8. Repeat Every Control Cycle
 
 ---
 
-# 📊 Expected Outcomes
+# 🛠 Hardware Stack
 
-At the completion of the project, the system should be capable of:
-
-- Detecting ball position accurately.
-- Maintaining the ball near the desired setpoint.
-- Rejecting external disturbances.
-- Demonstrating stable PID control.
-- Operating continuously without oscillation.
-- Providing a platform for future control experiments.
-
----
-
-# 📁 Project Deliverables
-
-The final project includes:
-
-- Complete CAD model
-- Mechanical assembly
-- Embedded software
-- PID implementation
-- Circuit diagram
-- Testing documentation
-- Build logs
-- Source code
-- Design report
-- GitHub repository
+| Component | Model | Purpose |
+|------------|--------|----------|
+| 🟦 Microcontroller | Arduino Nano | Main Controller |
+| 🔵 Servo | MG996R | Rail Actuation |
+| 📡 Distance Sensor | VL53L1X | Ball Position Measurement |
+| 🔋 DC Converter | XL4015 | Stable Power Supply |
+| 🪵 Structure | Wooden Rail | Mechanical Platform |
+| ⚪ Controlled Object | Steel Ball | Plant |
 
 ---
 
-# 👨‍💻 Team Members
+# 📊 Control Equation
 
-| Name | Role |
-|------|------|
-| Aayush Raj | PID Algorithm, Embedded Programming, Documentation |
-| Nityam Jayaswal | PID Algorithm, Procurement & Assembly, Documentation |
-| Roushan Kumar Sinha |CAD, Build, Documentation & Quality Assurance |
-| Vinayak Gupta | Testing & Validation, Doucmentation |
+The controller computes
 
+$$
+u(t)=K_p e(t)+K_i\int e(t)\,dt+K_d\frac{de(t)}{dt}
+$$
 
+where
+
+- **Kp** → Proportional Gain
+- **Ki** → Integral Gain
+- **Kd** → Derivative Gain
 
 ---
 
-# 📅 Development Timeline
+# 📂 Project Modules
 
-| Phase | Description |
-|--------|-------------|
-| Week 1 | Literature Survey |
-| Week 2 | Concept Selection |
-| Week 3 | CAD Design |
-| Week 4 | Procurement |
-| Week 5 | Mechanical Fabrication |
-| Week 6 | Electronics Integration |
-| Week 7 | Programming |
-| Week 8 | PID Tuning |
-| Week 9 | Testing |
-| Week 10 | Documentation |
+| Module | Description |
+|---------|-------------|
+| 📖 Documentation | Complete Design Documentation |
+| 💻 Source Code | Arduino PID Implementation |
+| 🛠 CAD | Mechanical Design Files |
+| 📷 Images | Project Images |
+| 📊 Testing | Experimental Results |
+| 🎥 Videos | Demonstration Videos |
+
+---
+
+# 👨‍💻 Team
+
+| Member | Responsibility |
+|----------|----------------|
+| **Aayush Raj** | PID Algorithm • Embedded Programming • Documentation |
+| **Nityam Jayaswal** | Procurement • Assembly • PID Implementation |
+| **Roushan Kumar Sinha** | CAD Design • Mechanical Fabrication |
+| **Vinayak Gupta** | Testing • Validation • Documentation |
+
+---
+
+# 📅 Development Roadmap
+
+```text
+Research
+   │
+   ▼
+Concept
+   │
+   ▼
+CAD Design
+   │
+   ▼
+Procurement
+   │
+   ▼
+Fabrication
+   │
+   ▼
+Electronics
+   │
+   ▼
+Programming
+   │
+   ▼
+PID Tuning
+   │
+   ▼
+Testing
+   │
+   ▼
+Documentation
+```
 
 ---
 
 # ✅ Success Criteria
 
-The project is considered successful if the following objectives are achieved:
-
-- Ball remains near the desired position.
-- Stable closed-loop control is maintained.
-- Oscillations are minimized.
-- Overshoot remains within acceptable limits.
-- Steady-state error is minimized.
-- Servo responds smoothly.
-- Sensor readings remain consistent.
-- System operates reliably over extended periods.
+- ✅ Stable Closed Loop Operation
+- ✅ Minimal Steady-State Error
+- ✅ Low Overshoot
+- ✅ Fast Settling Time
+- ✅ Reliable Sensor Feedback
+- ✅ Smooth Servo Motion
+- ✅ Robust Against Disturbances
 
 ---
 
 # 📂 Repository Structure
 
-```
-PID-1D-Ball-Balance/
+```text
+📦 PID-1D-Ball-Balance
 │
-├── docs/
-│   ├── 00_Overview.md
-│   ├── 01_Learning_Resources.md
-│   ├── 02_Design.md
-│   ├── 03_Build_Logs.md
-│   ├── 04_Testing.md
-│   ├── 05_Budget_Procurement.md
-│   ├── 06_Safety.md
-│   ├── 07_Lessons_Learnt.md
-│   └── 08_Future_Work.md
+├── 📂 CAD
+├── 📂 Code
+├── 📂 Images
+├── 📂 Testing
+├── 📂 Videos
 │
-├── CAD/
-├── Images/
-├── Code/
-├── Testing_Data/
-└── Videos/
+└── 📂 docs
+    ├── 📄 00_Overview.md
+    ├── 📄 01_Learning_Resources.md
+    ├── 📄 02_Design.md
+    ├── 📄 03_Build_Logs.md
+    ├── 📄 04_Testing.md
+    ├── 📄 05_Budget_Procurement.md
+    ├── 📄 06_Safety.md
+    ├── 📄 07_Lessons_Learnt.md
+    └── 📄 08_Future_Work.md
 ```
 
 ---
 
-# 🚀 Future Vision
+# 🚀 Future Enhancements
 
-Although this project demonstrates a classical PID controller for a one-dimensional balancing system, the same architecture can be extended to more sophisticated applications including:
-
-- 2-D Ball-on-Plate Systems
-- Autonomous UAV Stabilization
-- Self-Balancing Robots
-- Robotic Manipulators
-- Adaptive Control Systems
-- Vision-Based Tracking
-- AI-Assisted Controller Tuning
-- Industrial Motion Control
+- 📹 Vision-Based Ball Tracking
+- 🤖 Adaptive PID Controller
+- 🧠 AI-Based Gain Optimization
+- 🎯 Ball-on-Plate System
+- 📡 Wireless Monitoring Dashboard
+- 🛰 UAV Attitude Control Implementation
+- 🌐 ROS Integration
+- 📈 MATLAB/Simulink Digital Twin
 
 ---
 
 <div align="center">
 
-## ⭐ "Understanding control theory is not merely about balancing a ball—it is about mastering the principles that stabilize aircraft, guide spacecraft, and automate the modern world."
+## ⭐ *"Every autonomous aircraft, robot, and spacecraft begins with mastering the fundamentals of feedback control."*
 
 ---
 
-**Department of Electronics & Communication Engineering**  
+<img src="../Images/final_render.png" width="800"/>
+
+### Built with ❤️ by Team 4
+
 **Birla Institute of Technology, Mesra**
 
 </div>
