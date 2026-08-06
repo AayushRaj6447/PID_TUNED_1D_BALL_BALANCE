@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="Images/banner.png" width="140"/>
+<img src="Images/banner.png" width="100%"/>
 
 # ⚖️ PID Controlled 1-D Ball Balance System
 
